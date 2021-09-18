@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:04:45 by anolivei          #+#    #+#             */
-/*   Updated: 2021/09/15 23:24:26 by anolivei         ###   ########.fr       */
+/*   Updated: 2021/09/18 13:15:07 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <readline/history.h>
 # include <sys/wait.h>
 # include <signal.h>
+# include "lexer.h"
 
 # define DOUBLE_QUOTE '\"'
 # define QUOTE '\''
@@ -49,16 +50,16 @@ typedef struct s_env
 ** General structure
 */
 
-typedef struct s_token
-{
-	size_t	size;
-	char	**tokens;
-	char	*head;
-	char	*next;
-	int		head_i;
-	int		next_tk_i;
-	int		before_token;
-}			t_token;
+// typedef struct s_token
+// {
+// 	size_t	size;
+// 	char	**tokens;
+// 	char	*head;
+// 	char	*next;
+// 	int		head_i;
+// 	int		next_tk_i;
+// 	int		before_token;
+// }			t_token;
 
 typedef struct s_cmd
 {

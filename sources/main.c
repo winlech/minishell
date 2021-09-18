@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anolivei <anolivei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wbertoni <wbertoni@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/25 15:08:24 by anolivei          #+#    #+#             */
-/*   Updated: 2021/09/15 22:57:44 by anolivei         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:53:02 by wbertoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,23 @@ int	main(void)
 		tmp_line_read_aux = get_line(mini.line_read);
 		if (ft_strlen(tmp_line_read_aux) != 0)
 		{
-			split_cmd(&mini, tmp_line_read_aux);
-			mini.line_read = ft_strtrim(tmp_line_read_aux, " ");
-			run_commands(&mini);
-			free(mini.line_read);
-			free_char_array(mini.tokens);
-			free_char_array2(mini.commands);
+			t_list *tokens;
+
+			tokens = (t_list *)ft_calloc(1, sizeof(t_list));
+			tac_compile(tmp_line_read_aux, tokens);
+			while (tokens)
+			{
+				int i= (int)(((t_token *)tokens->content)->type);
+				char *str = ((t_token *)tokens->content)->value;
+				printf("<int_type=`%d`, value=`%s`>\n", i, str);
+				tokens = tokens->next;
+			}
+			// split_cmd(&mini, tmp_line_read_aux);
+			// mini.line_read = ft_strtrim(tmp_line_read_aux, " ");
+			// run_commands(&mini);
+			// free(mini.line_read);
+			// free_char_array(mini.tokens);
+			// free_char_array2(mini.commands);
 		}
 		free(tmp_line_read_aux);
 	}
